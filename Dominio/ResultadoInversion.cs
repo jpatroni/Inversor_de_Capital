@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio  // para acordarme Esta clase representa el resultado de una inversión concreta
 {
-    internal class ResultadoInversion
+    public class ResultadoInversion
     {
         public Banco Banco { get; set; }
         public ModalidadInversion Modalidad { get; set; }

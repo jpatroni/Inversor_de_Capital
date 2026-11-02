@@ -8,9 +8,9 @@ namespace Dominio
 {
     public enum ModalidadInversion
     {
-        anual,
-        trimestral,
-        mensual
+        Anual,
+        Trimestral,
+        Mensual
 
     }
 }
