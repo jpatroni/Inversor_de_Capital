@@ -15,6 +15,35 @@
  <asp:TextBox ID="txtTasa3" runat="server" />
 
     <br /><br />
+
+    <h2>Banco Nación</h2>
+
+<p>Primera tasa anual (%):</p>
+<asp:TextBox ID="txtNacionTasa1" runat="server" />
+
+<p>Segunda tasa anual (%):</p>
+<asp:TextBox ID="txtNacionTasa2" runat="server" />
+
+<p>Tercera tasa anual (%):</p>
+<asp:TextBox ID="txtNacionTasa3" runat="server" />
+
+<br /><br />
+
+    <h2>Banco Hipotecario</h2>
+
+<p>Primera tasa anual (%):</p>
+<asp:TextBox ID="txtHipotecarioTasa1" runat="server" />
+
+<p>Segunda tasa anual (%):</p>
+<asp:TextBox ID="txtHipotecarioTasa2" runat="server" />
+
+<p>Tercera tasa anual (%):</p>
+<asp:TextBox ID="txtHipotecarioTasa3" runat="server" />
+
+<br /><br />
+
+
+
    <asp:Button ID="btnCalcular" runat="server"
     Text="Calcular promedio"
     OnClick="btnCalcular_Click" />
@@ -26,6 +55,12 @@
     CssClass="table table-bordered table-striped">
 
     <Columns>
+        <asp:TemplateField HeaderText="Banco">
+    <ItemTemplate>
+        <%# Eval("Banco.Nombre") %>
+    </ItemTemplate>
+</asp:TemplateField> 
+
         <asp:BoundField DataField="Modalidad"
             HeaderText="Modalidad" />
 

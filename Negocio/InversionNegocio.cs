@@ -123,7 +123,23 @@ namespace Negocio
 
         }
 
+        public List<ResultadoInversion> CalcularResultadosBancos( //Recorre los bancos y reutiliza CalcularResultados para cada uno.
+    List<Banco> bancos,
+    decimal capitalInicial)
+        {
+            List<ResultadoInversion> resultados =
+                new List<ResultadoInversion>();
 
+            foreach (Banco banco in bancos)
+            {
+                List<ResultadoInversion> resultadosBanco =
+                    CalcularResultados(banco, capitalInicial);
+
+                resultados.AddRange(resultadosBanco); // agrega todos los elementos de una lista a otra: aquí agrega las tres fichas de cada banco.
+            }
+
+            return resultados;
+        }
 
 
     }

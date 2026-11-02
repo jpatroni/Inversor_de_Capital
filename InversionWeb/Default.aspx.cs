@@ -17,16 +17,10 @@ namespace InversionWeb
         }
         protected void btnCalcular_Click(object sender, EventArgs e) // El botón está coordinando: carga las tasas, pide el promedio y después pide el capital final.
         {
-            Banco banco = new Banco();
-            banco.Nombre = "Banco Provincia";
-            List<string> textoTasas = new List<string>
-{
-    txtTasa1.Text,
-    txtTasa2.Text,
-    txtTasa3.Text
-};
+            List<Banco> bancos;
 
-            if (!IntentarCargarTasa(banco, textoTasas))
+
+            if (!IntentarCargarBancos(out bancos))
             {
                 return;
             }
@@ -34,7 +28,7 @@ namespace InversionWeb
             {
                 InversionNegocio negocio = new InversionNegocio();
                 List<ResultadoInversion> resultados =
-    negocio.CalcularResultados(banco, 850000m);
+    negocio.CalcularResultadosBancos(bancos, 850000m);
                 MostrarResultados(resultados);
 
 
@@ -46,6 +40,60 @@ namespace InversionWeb
             }
 
         }
+
+
+        private bool IntentarCargarBancos(out List<Banco> bancos)
+        {
+            bancos = new List<Banco>();
+            Banco provincia = new Banco();
+            provincia.Nombre = "Banco Provincia";
+            List<string> tasasProvincia = new List<string>
+            {
+                txtTasa1.Text,
+                txtTasa2.Text,
+                txtTasa3.Text
+            };
+            if (!IntentarCargarTasa(provincia, tasasProvincia)) // rovincia, utiliza la carga que ya funciona y agrega ese banco a una lista
+            {
+                return false;
+
+            }
+            bancos.Add(provincia);
+
+
+            Banco nacion = new Banco();
+            nacion.Nombre = "Banco Nación";
+            List<string> tasasNacion = new List<string>
+            {
+                txtNacionTasa1.Text,
+                txtNacionTasa2.Text,
+                txtNacionTasa3.Text
+            };
+            if (!IntentarCargarTasa(nacion, tasasNacion))
+            {
+                return false;
+            }
+
+            bancos.Add(nacion);
+
+            Banco hipotecario = new Banco();
+            hipotecario.Nombre = "Banco Hipotecario";
+            List<string> tasasHipotecario = new List<string>
+{
+    txtHipotecarioTasa1.Text,
+    txtHipotecarioTasa2.Text,
+    txtHipotecarioTasa3.Text
+};
+            if (!IntentarCargarTasa(hipotecario, tasasHipotecario))
+            {
+                return false;
+            }
+
+            bancos.Add(hipotecario);
+
+            return true;
+        }
+
 
         private bool IntentarCargarTasa(Banco banco, List<string> textoTasas)
         {
