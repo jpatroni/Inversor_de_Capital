@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace Negocio
 {
     public class InversionNegocio
@@ -52,7 +51,7 @@ namespace Negocio
         }
 
         // Reúne los datos y cálculos de una inversión.
-        public ResultadoInversion CalcularResultado(  
+        public ResultadoInversion CalcularResultado(
             Banco banco,
             decimal capitalInicial,
             ModalidadInversion modalidad)
@@ -90,8 +89,6 @@ namespace Negocio
                 resultado.TasaAnualPromedio,
                 cantidadPeriodos);
 
-
-
             return resultado;
         }
 
@@ -102,33 +99,30 @@ namespace Negocio
             List<ResultadoInversion> resultados = new List<ResultadoInversion>();
 
             List<ModalidadInversion> modalidades = new List<ModalidadInversion>
-        {
-            ModalidadInversion.Anual,
-            ModalidadInversion.Trimestral,
-            ModalidadInversion.Mensual
-        };
- foreach (ModalidadInversion modalidad in modalidades )
+            {
+                ModalidadInversion.Anual,
+                ModalidadInversion.Trimestral,
+                ModalidadInversion.Mensual
+            };
+
+            foreach (ModalidadInversion modalidad in modalidades)
             {
                 ResultadoInversion resultado = CalcularResultado(
                     banco,
                     capitalInicial,
                     modalidad);
+
                 resultados.Add(resultado);
             }
 
-
-
             return resultados;
-
-
         }
 
         public List<ResultadoInversion> CalcularResultadosBancos( //Recorre los bancos y reutiliza CalcularResultados para cada uno.
-    List<Banco> bancos,
-    decimal capitalInicial)
+            List<Banco> bancos,
+            decimal capitalInicial)
         {
-            List<ResultadoInversion> resultados =
-                new List<ResultadoInversion>();
+            List<ResultadoInversion> resultados = new List<ResultadoInversion>();
 
             foreach (Banco banco in bancos)
             {
@@ -141,6 +135,33 @@ namespace Negocio
             return resultados;
         }
 
+        public List<ResultadoInversion> ObtenerMejoresResultados(
+            List<ResultadoInversion> resultados)
+        {
+            List<ResultadoInversion> mejores = new List<ResultadoInversion>(); // mejores guarda las fichas que vamos a devolver.
 
+            if (resultados.Count == 0)
+            {
+                return mejores;
+            }
+
+            decimal mayorGanancia = resultados[0].Ganancia; // : mayorGanancia guarda un número para comparar
+
+            foreach (ResultadoInversion resultado in resultados)
+            {
+                if (resultado.Ganancia > mayorGanancia)
+                {
+                    mayorGanancia = resultado.Ganancia;
+                    mejores.Clear();
+                }
+
+                if (resultado.Ganancia == mayorGanancia)
+                {
+                    mejores.Add(resultado);
+                }
+            }
+
+            return mejores;
+        }
     }
 }

@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="Dominio/Dominio.csproj" />
-  <Project Path="InversionWeb/InversionWeb.csproj" />
-  <Project Path="Negocio/Negocio.csproj" />
+  <Project Path="Dominio/Dominio.csproj" Id="1118f42e-178d-497b-8e04-1c2c0b73c360" />
+  <Project Path="InversionWeb/InversionWeb.csproj" Id="927616e9-b2b6-4bfb-a795-4da977f3463a" />
+  <Project Path="Negocio/Negocio.csproj" Id="b659949f-62b0-4e72-82e0-7aa71d90328e" />
 </Solution>
