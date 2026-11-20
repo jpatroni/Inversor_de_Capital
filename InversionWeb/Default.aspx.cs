@@ -39,6 +39,16 @@ namespace InversionWeb
             {
                 lblResultado.Text = ex.Message;
             }
+
+            catch(OverflowException)
+            {
+                gvResultados.DataSource = null;
+                gvResultados.DataBind();
+
+                lblResultado.Text = "Las tasas ingresadas son demasiado altas para completar la simulación.";
+            }
+
+
         }
 
         private bool IntentarCargarBancos(out List<Banco> bancos)

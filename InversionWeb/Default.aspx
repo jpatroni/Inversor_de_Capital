@@ -2,11 +2,18 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
+  
+
     <h1> Simulador de Inversiones   </h1>
     <p> Compara los rendimientos de diferentes opciones de inversión</p>
 
-    <h2>Banco Provincia</h2>
     <p>Capital inicial a invertir: $850.000</p>
+
+    <div class="row">
+    <div class="col-md-4">
+
+    <h2>Banco Provincia</h2>
+    
     <p>Primer Tasa Anual(%):</p>
     <asp:TextBox ID="txtTasa1" runat ="server" />
     <p>Segunda Tasa Anual(%):</p>
@@ -14,7 +21,12 @@
      <p>Tercer Tasa Anual(%):</p>
  <asp:TextBox ID="txtTasa3" runat="server" />
 
+            </div>
+
+
     <br /><br />
+
+        <div class="col-md-4">
 
     <h2>Banco Nación</h2>
 
@@ -27,7 +39,12 @@
 <p>Tercera tasa anual (%):</p>
 <asp:TextBox ID="txtNacionTasa3" runat="server" />
 
+                </div>
+
+
 <br /><br />
+
+        <div class="col-md-4">
 
     <h2>Banco Hipotecario</h2>
 
@@ -39,6 +56,8 @@
 
 <p>Tercera tasa anual (%):</p>
 <asp:TextBox ID="txtHipotecarioTasa3" runat="server" />
+                </div>
+</div>
 
 <br /><br />
 
